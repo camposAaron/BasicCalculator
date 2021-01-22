@@ -14,11 +14,21 @@ window.addEventListener('load', function(e){
         btn.forEach(element => {
           console.log(element);
             element.addEventListener('click',function(){
-                let currentNumber:string = opLabel.innerHTML;
+            
+                let currentOperation:string = opLabel.innerHTML;
                 console.log(element);
-                let btnspan = element.lastElementChild;
-                console.log(btnspan?.innerHTML);
-                opLabel.innerHTML = currentNumber + btnspan?.innerHTML;
+                let currentBtn = element.lastElementChild;
+
+                if(!currentBtn?.classList.contains('special')){
+                    console.log(currentBtn?.innerHTML);
+                    opLabel.innerHTML = currentOperation + currentBtn?.innerHTML;
+                }else if(currentBtn.innerHTML == 'DEL'){
+                    currentOperation=  opLabel.innerHTML;
+                    opLabel.innerHTML =  currentOperation.slice(0,currentOperation.length - 1);
+                }else if(currentBtn.innerHTML == 'AC'){
+                    opLabel.innerHTML =  "";
+                }
+               
             });
         });
     }

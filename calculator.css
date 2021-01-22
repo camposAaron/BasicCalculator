@@ -46,7 +46,7 @@ body {
   background: #f0c38e;
   margin: 0px auto;
   margin-top: 10px;
-  font-family: tahoma,arial, Trebuchet;
+  font-family: tahoma,arial, Trebuchet, Verdana;
   color: #312c51;
   font-size: 16px;
 }
@@ -59,6 +59,8 @@ body {
       -ms-flex-pack: start;
           justify-content: flex-start;
   font-size: 14px;
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
 }
 
 #layout #display #ans {
@@ -68,6 +70,8 @@ body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
 }
 
 #layout #buttons {
@@ -114,7 +118,7 @@ body {
   display: flex;
   -ms-flex-preferred-size: 18%;
       flex-basis: 18%;
-  border-radius: 5px;
+  border-radius: 10px 10px 17px 17px;
   background-color: #f2aa9c;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
@@ -135,7 +139,7 @@ body {
 }
 
 #layout #buttons .btn .info-btn {
-  font-family: tahoma,arial, Trebuchet;
+  font-family: tahoma,arial, Trebuchet, Verdana;
   color: #312c51;
   font-size: 16px;
   color: #201c35;

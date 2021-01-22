@@ -9,11 +9,20 @@ window.addEventListener('load', function (e) {
         btn.forEach(function (element) {
             console.log(element);
             element.addEventListener('click', function () {
-                var currentNumber = opLabel.innerHTML;
+                var currentOperation = opLabel.innerHTML;
                 console.log(element);
-                var btnspan = element.lastElementChild;
-                console.log(btnspan === null || btnspan === void 0 ? void 0 : btnspan.innerHTML);
-                opLabel.innerHTML = currentNumber + (btnspan === null || btnspan === void 0 ? void 0 : btnspan.innerHTML);
+                var currentBtn = element.lastElementChild;
+                if (!(currentBtn === null || currentBtn === void 0 ? void 0 : currentBtn.classList.contains('special'))) {
+                    console.log(currentBtn === null || currentBtn === void 0 ? void 0 : currentBtn.innerHTML);
+                    opLabel.innerHTML = currentOperation + (currentBtn === null || currentBtn === void 0 ? void 0 : currentBtn.innerHTML);
+                }
+                else if (currentBtn.innerHTML == 'DEL') {
+                    currentOperation = opLabel.innerHTML;
+                    opLabel.innerHTML = currentOperation.slice(0, currentOperation.length - 1);
+                }
+                else if (currentBtn.innerHTML == 'AC') {
+                    opLabel.innerHTML = "";
+                }
             });
         });
     }
