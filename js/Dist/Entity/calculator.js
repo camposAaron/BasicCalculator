@@ -20,11 +20,22 @@ var Calculator = /** @class */ (function () {
         this.output = this.output ^ 2;
         return this.output;
     };
-    //cating
+    //casting
     Calculator.prototype.casting = function () {
         this.input = this.input.replace(/÷/g, "/");
         this.input = this.input.replace(/x/g, "*");
         console.log(this.input);
+    };
+    Calculator.prototype.Calculator = function () {
+        var cadena = this.input;
+        var index1, index2;
+        var salida;
+        if (cadena.includes('/')) {
+            index1 = cadena.indexOf('/');
+        }
+        if (cadena.includes('*')) {
+            index2 = cadena.indexOf('*');
+        }
     };
     return Calculator;
 }());

@@ -95,6 +95,7 @@ body{
             cursor: pointer;
             justify-content: center;
             align-items: center;
+            border-radius: 10px 10px 17px 17px;
             @include unselectable();
 
             .info-btn{
