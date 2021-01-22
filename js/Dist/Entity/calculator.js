@@ -36,6 +36,7 @@ var Calculator = /** @class */ (function () {
         if (cadena.includes('*')) {
             index2 = cadena.indexOf('*');
         }
+        return '0';
     };
     return Calculator;
 }());

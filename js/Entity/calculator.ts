@@ -46,6 +46,7 @@
             index2 = cadena.indexOf('*');
         }
 
+        return '0';
 
      }
 }
