@@ -1,0 +1,131 @@
+/*Colour palette*/
+$backColor1: #312c51;
+$backColor2: #48426D;
+$backColor3: #f0c38e;
+$backColor4: #f2aa9c;
+$buttonColor: #736D99;
+
+/*Font styles*/
+@mixin  DisplayFont {
+    font-family: tahoma,arial, Trebuchet;
+    color:#312c51;
+    font-size: 16px;
+}
+
+/*unselectable mode*/
+@mixin unselectable{
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+}
+
+body{
+    background: url(imga/radialimage.png);
+    background-color: #201c35;
+}
+
+#layout{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 40%;
+    justify-items: center;
+    height: 350px;
+    border: 1px solid $backColor1;
+    background-color: $backColor2;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px #201c35;
+    margin-bottom: 20px;
+
+    #display{
+       display: flex;
+       flex-direction: column;
+       flex-basis: 15%;
+       border-radius: 10px;
+       width: 95%;
+       padding-inline: 5px;
+       box-sizing: border-box;
+       justify-items: center;
+       background: $backColor3;
+       margin: 0px auto;
+       margin-top:10px;
+       @include DisplayFont();
+
+      #operations{
+         display: flex;
+         justify-content: flex-start;
+         font-size: 14px;
+      }
+
+      #ans{
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    #buttons{
+        display: flex;
+        flex-direction: column;
+        flex-wrap:  wrap;
+        flex-grow: 1;
+        padding: 25px;
+
+        .row{
+            display: flex;
+            flex-flow: row wrap;
+            flex-basis: 25%;
+            flex-grow: 1;
+            background-color:  $backColor1;
+            justify-content: space-around;
+            padding-top: 7px;
+            padding-bottom: 5PX;
+            box-sizing: border-box;
+        }
+
+        .btn{
+            display: flex;
+            flex-basis: 18%;
+            border-radius: 5px;
+            background-color: $backColor4;
+            box-sizing: content-box ;
+            box-shadow: 1px -1px 1px $backColor2, 2px -2px 1px $backColor2,
+            3px -3px 1px $backColor2, 4px -4px 1px $backColor2;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            @include unselectable();
+
+            .info-btn{
+              @include DisplayFont();
+              color: #201c35;
+              font-weight: 600;
+              
+            }
+       
+        }
+
+        .btn:active{
+            animation-name: borderNone;
+            animation-duration: 0.3s;
+        }
+
+      
+
+        @keyframes borderNone {
+            from{
+                box-shadow: 4px 4px 1px $backColor2;
+                transform: scale(1,0.90);
+                transform:  translateX(2px);
+                
+                
+            }to{
+                box-shadow: 0px 0px 1px $backColor2;
+            }
+        }
+    }
+
+
+
+}
