@@ -1,13 +1,10 @@
- class Calculator implements ICalculate{
+export class Calculator implements ICalculate{
     
-    private input:string;
-    private output:number;
+    private input:string = "";
+    private output:number = 0;
     
-    constructor(input:string,output:number){
-        this.input = input;
-        this.output = output;
+    constructor(){
     }
-
 
      sumar(): number {
          throw new Error("Method not implemented.");
@@ -27,29 +24,13 @@
      }
 
      //casting
-     casting(){
+     casting(inputChain:string):string{
         this.input = this.input.replace(/÷/g,"/");
         this.input = this.input.replace(/x/g,"*");
         console.log(this.input);
+        return this.input;
      }
 
-     Calculator():string{
-       var cadena = this.input;
-       var index1:number, index2:number;
-       var salida:number;
-      
-        if(cadena.includes('/')){
-             index1 = cadena.indexOf('/');
-        }
-
-        if(cadena.includes('*')){
-            index2 = cadena.indexOf('*');
-        }
-
-        return '0';
-
-     }
+    
 }
 
-let c = new Calculator('1÷5x1',5);
-console.log(c.casting())

@@ -1,29 +1,31 @@
-'use strict';
-window.addEventListener('load', function (e) {
-    //globals variables
-    var opLabel = document.getElementById('opLabel');
-    var btn = document.querySelectorAll('.btn');
-    //catching the number function
-    CatchInfoBtn();
-    function CatchInfoBtn() {
-        btn.forEach(function (element) {
-            console.log(element);
-            element.addEventListener('click', function () {
-                var currentOperation = opLabel.innerHTML;
-                console.log(element);
-                var currentBtn = element.lastElementChild;
-                if (!(currentBtn === null || currentBtn === void 0 ? void 0 : currentBtn.classList.contains('special'))) {
-                    console.log(currentBtn === null || currentBtn === void 0 ? void 0 : currentBtn.innerHTML);
-                    opLabel.innerHTML = currentOperation + (currentBtn === null || currentBtn === void 0 ? void 0 : currentBtn.innerHTML);
-                }
-                else if (currentBtn.innerHTML == 'DEL') {
-                    currentOperation = opLabel.innerHTML;
-                    opLabel.innerHTML = currentOperation.slice(0, currentOperation.length - 1);
-                }
-                else if (currentBtn.innerHTML == 'AC') {
-                    opLabel.innerHTML = "";
-                }
-            });
+import { Calculator } from "./Entity/calculator.js";
+var opLabel = document.getElementById('opLabel');
+var ansLabel = document.getElementById('ansLabel');
+const btn = document.querySelectorAll('.btn');
+const myCalculator = new Calculator();
+CatchInfoBtn();
+/*catch the description value of button*/
+function CatchInfoBtn() {
+    btn.forEach(element => {
+        element.addEventListener('click', function () {
+            let currentOperation = opLabel.innerHTML;
+            let clickedBtn = element.lastElementChild;
+            if (!(clickedBtn === null || clickedBtn === void 0 ? void 0 : clickedBtn.classList.contains('special'))) {
+                console.log(clickedBtn === null || clickedBtn === void 0 ? void 0 : clickedBtn.innerHTML);
+                opLabel.innerHTML = currentOperation + (clickedBtn === null || clickedBtn === void 0 ? void 0 : clickedBtn.innerHTML);
+            }
+            else if (clickedBtn.innerHTML == 'DEL') {
+                currentOperation = opLabel.innerHTML;
+                opLabel.innerHTML = currentOperation.slice(0, currentOperation.length - 1);
+            }
+            else if (clickedBtn.innerHTML == 'AC') {
+                opLabel.innerHTML = "";
+                ansLabel.innerHTML = "";
+            }
+            else if (clickedBtn.innerHTML == '=') {
+                myCalculator.casting(currentOperation);
+            }
         });
-    }
-});
+    });
+}
+//# sourceMappingURL=main.js.map

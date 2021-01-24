@@ -1,36 +1,38 @@
-'use strict'
-window.addEventListener('load', function(e){
-    
-   //globals variables
+import { Calculator } from "./Entity/calculator.js";
+
+
    var opLabel:any = document.getElementById('opLabel');
+   var ansLabel:any = document.getElementById('ansLabel');
    const btn =  document.querySelectorAll('.btn');
+   const myCalculator = new Calculator();
+
+    CatchInfoBtn();
    
 
-   //catching the number function
-   CatchInfoBtn();
-
-   
+   /*catch the description value of button*/
    function CatchInfoBtn():void{
         btn.forEach(element => {
-          console.log(element);
             element.addEventListener('click',function(){
-            
+                
                 let currentOperation:string = opLabel.innerHTML;
-                console.log(element);
-                let currentBtn = element.lastElementChild;
+                let clickedBtn = element.lastElementChild;
 
-                if(!currentBtn?.classList.contains('special')){
-                    console.log(currentBtn?.innerHTML);
-                    opLabel.innerHTML = currentOperation + currentBtn?.innerHTML;
-                }else if(currentBtn.innerHTML == 'DEL'){
+                if(!clickedBtn?.classList.contains('special')){
+                    console.log(clickedBtn?.innerHTML);
+                    opLabel.innerHTML = currentOperation + clickedBtn?.innerHTML;
+                }else if(clickedBtn.innerHTML == 'DEL'){
                     currentOperation=  opLabel.innerHTML;
                     opLabel.innerHTML =  currentOperation.slice(0,currentOperation.length - 1);
-                }else if(currentBtn.innerHTML == 'AC'){
+                }else if(clickedBtn.innerHTML == 'AC'){
                     opLabel.innerHTML =  "";
-                }
-               
+                    ansLabel.innerHTML = "";
+                }else if(clickedBtn.innerHTML == '='){
+                    myCalculator.casting(currentOperation);
+                }  
             });
         });
     }
-});
+
+
+
 
