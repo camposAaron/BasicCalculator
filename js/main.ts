@@ -27,7 +27,14 @@ import { Calculator } from "./Entity/calculator.js";
                     opLabel.innerHTML =  "";
                     ansLabel.innerHTML = "";
                 }else if(clickedBtn.innerHTML == '='){
-                    myCalculator.casting(currentOperation);
+                   try{
+                     console.log( myCalculator.casting(currentOperation));
+                        
+                    }catch(error){
+                     console.error(error);
+                     ansLabel.innerHTML =" Syntax Error";
+                   }
+                    
                 }  
             });
         });

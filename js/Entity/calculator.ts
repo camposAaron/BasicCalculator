@@ -23,13 +23,20 @@ export class Calculator implements ICalculate{
         return this.output;
      }
 
-     //casting
+     //transform ÷ => /  and  x => *
      casting(inputChain:string):string{
-        this.input = this.input.replace(/÷/g,"/");
+        this.input = inputChain.replace(/÷/g,"/");
         this.input = this.input.replace(/x/g,"*");
         console.log(this.input);
         return this.input;
      }
+
+     //Infixed To postFixed
+     Execute(){
+        
+     }
+
+
 
     
 }
