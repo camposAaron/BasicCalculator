@@ -1,13 +1,14 @@
 export class Calculator implements ICalculate{
     //Infixs inputs chain
     private inputs:string[];
-    //pile
+    //pile 
     private operatorPile:string[];
     //postFixed chain
     private  postFix:string[];
     //precedent dictionary
     private precedent: Map<string, any>;
-
+    //number pile
+    private operatorPile2:number[];
     constructor(){
         //initializing the map
         this.precedent =  new Map<string, any>();
@@ -20,31 +21,47 @@ export class Calculator implements ICalculate{
         this.operatorPile = [];
         this.postFix = [];
         this.inputs = [];
+
+        this.operatorPile2 = [];
+    }
+   
+    DoAritmethitc(simbol: string, operatingLeft: number, operatingRight: number): number {
+       switch(simbol){
+        case '*':
+            return operatingLeft * operatingRight;
+        break;
+
+        case '/':
+            return operatingLeft / operatingRight;
+        break;
+
+        case '+':
+            return operatingLeft + operatingRight;
+        break;
+
+        case '-':
+            return operatingLeft - operatingRight;
+        break;
+
+        default:
+            return -1;
+        break;
+       }
+
+       
     }
 
-     sumar(): number {
-         throw new Error("Method not implemented.");
-     }
-     restar(): number {
-         throw new Error("Method not implemented.");
-     }
-     dividir(): number {
-         throw new Error("Method not implemented.");
-     }
-     multiplicar(): number {
-         throw new Error("Method not implemented.");
-     }
-     potencia(): number {
-        throw new Error("Method not implemented.");
-     }
-
-     cleanPostFix():void{
+    private cleanPostFix():void{
          this.postFix.splice(0,  this.postFix.length);
      }
 
-     cleanInputs():void{
+    private cleanInputs():void{
          this.inputs.splice(0,this.inputs.length);
      }
+    
+    private cleanOperationPile(){
+        this.operatorPile.splice(0,this.inputs.length);
+    }
 
      //transform ÷ => /  and  x => *
     private casting(inputChain:string):string[]{
@@ -93,6 +110,22 @@ export class Calculator implements ICalculate{
             this.postFix.push(this.operatorPile.pop()!);
         }
         return this.postFix;
+    }
 
+    Evaluating():number{
+        this.cleanOperationPile();
+        this.postFix.forEach((simbol)=>{
+            
+            if(this.precedent.get(simbol) == undefined){
+                this.operatorPile2.push(parseInt(simbol));
+            }else{
+                let operating2:number = this.operatorPile2.pop()!;
+                let operating1:number = this.operatorPile2.pop()!;
+                let result = this.DoAritmethitc(simbol,operating1,operating2);
+                this.operatorPile2.push(result); 
+            }
+        });
+
+        return this.operatorPile2.pop()!;
     }
 }

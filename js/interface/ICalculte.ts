@@ -1,7 +1,3 @@
 interface ICalculate{
-    sumar():number;
-    restar():number;
-    dividir():number;
-    multiplicar():number;
-    potencia():number;
+   DoAritmethitc(simbol:string, operatingLeft:number, operatingRight:number):number;
 }

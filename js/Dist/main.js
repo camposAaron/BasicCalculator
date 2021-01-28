@@ -25,6 +25,7 @@ function CatchInfoBtn() {
             else if (clickedBtn.innerHTML == '=') {
                 try {
                     console.log(myCalculator.ToPostFix(currentOperation));
+                    ansLabel.innerHTML = `${myCalculator.Evaluating()}`;
                 }
                 catch (error) {
                     console.error(error);

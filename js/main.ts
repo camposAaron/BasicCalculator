@@ -29,7 +29,7 @@ import { Calculator } from "./Entity/calculator.js";
                 }else if(clickedBtn.innerHTML == '='){
                    try{
                      console.log(myCalculator.ToPostFix(currentOperation));
-                    
+                      ansLabel.innerHTML = `${myCalculator.Evaluating()}`;  
                     }catch(error){
                      console.error(error);
                      ansLabel.innerHTML =" Syntax Error";

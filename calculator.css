@@ -149,8 +149,8 @@ body {
 #layout #buttons .btn:active {
   -webkit-animation-name: borderNone;
           animation-name: borderNone;
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
+  -webkit-animation-duration: 0.100s;
+          animation-duration: 0.100s;
 }
 
 @-webkit-keyframes borderNone {

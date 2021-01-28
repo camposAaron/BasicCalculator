@@ -10,27 +10,35 @@ export class Calculator {
         this.operatorPile = [];
         this.postFix = [];
         this.inputs = [];
+        this.operatorPile2 = [];
     }
-    sumar() {
-        throw new Error("Method not implemented.");
-    }
-    restar() {
-        throw new Error("Method not implemented.");
-    }
-    dividir() {
-        throw new Error("Method not implemented.");
-    }
-    multiplicar() {
-        throw new Error("Method not implemented.");
-    }
-    potencia() {
-        throw new Error("Method not implemented.");
+    DoAritmethitc(simbol, operatingLeft, operatingRight) {
+        switch (simbol) {
+            case '*':
+                return operatingLeft * operatingRight;
+                break;
+            case '/':
+                return operatingLeft / operatingRight;
+                break;
+            case '+':
+                return operatingLeft + operatingRight;
+                break;
+            case '-':
+                return operatingLeft - operatingRight;
+                break;
+            default:
+                return -1;
+                break;
+        }
     }
     cleanPostFix() {
         this.postFix.splice(0, this.postFix.length);
     }
     cleanInputs() {
         this.inputs.splice(0, this.inputs.length);
+    }
+    cleanOperationPile() {
+        this.operatorPile.splice(0, this.inputs.length);
     }
     //transform ÷ => /  and  x => *
     casting(inputChain) {
@@ -73,6 +81,21 @@ export class Calculator {
             this.postFix.push(this.operatorPile.pop());
         }
         return this.postFix;
+    }
+    Evaluating() {
+        this.cleanOperationPile();
+        this.postFix.forEach((simbol) => {
+            if (this.precedent.get(simbol) == undefined) {
+                this.operatorPile2.push(parseInt(simbol));
+            }
+            else {
+                let operating2 = this.operatorPile2.pop();
+                let operating1 = this.operatorPile2.pop();
+                let result = this.DoAritmethitc(simbol, operating1, operating2);
+                this.operatorPile2.push(result);
+            }
+        });
+        return this.operatorPile2.pop();
     }
 }
 //# sourceMappingURL=calculator.js.map
