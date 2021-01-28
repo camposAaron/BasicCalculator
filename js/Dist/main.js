@@ -23,14 +23,9 @@ function CatchInfoBtn() {
                 ansLabel.innerHTML = "";
             }
             else if (clickedBtn.innerHTML == '=') {
-                try {
-                    console.log(myCalculator.ToPostFix(currentOperation));
-                    ansLabel.innerHTML = `${myCalculator.Evaluating()}`;
-                }
-                catch (error) {
-                    console.error(error);
-                    ansLabel.innerHTML = " Syntax Error";
-                }
+                console.log(myCalculator.ToPostFix(currentOperation));
+                let ansNumber = myCalculator.Evaluating();
+                !isNaN(ansNumber) ? ansLabel.innerHTML = `${ansNumber}` : ansLabel.innerHTML = `Syntax Error`;
             }
         });
     });

@@ -47,7 +47,7 @@ export class Calculator {
         let arrayCasted;
         inputChain = inputChain.replace(/÷/g, "/");
         inputChain = inputChain.replace(/x/g, "*");
-        arrayCasted = Array.from(inputChain);
+        arrayCasted = inputChain.split(' ');
         return arrayCasted;
     }
     //Infix To postfix algorithm
