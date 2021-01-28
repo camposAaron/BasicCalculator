@@ -118,7 +118,7 @@ body{
 
         @keyframes borderNone {
             from{
-                box-shadow: 4px 4px 1px $backColor2;
+                box-shadow: 4px -4px 1px $backColor2;
                 transform: scale(1,0.90);
                 transform:  translateX(2px);
                 
