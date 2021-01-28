@@ -24,7 +24,7 @@ function CatchInfoBtn() {
             }
             else if (clickedBtn.innerHTML == '=') {
                 try {
-                    console.log(myCalculator.casting(currentOperation));
+                    console.log(myCalculator.ToPostFix(currentOperation));
                 }
                 catch (error) {
                     console.error(error);

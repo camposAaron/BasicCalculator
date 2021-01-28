@@ -28,13 +28,12 @@ import { Calculator } from "./Entity/calculator.js";
                     ansLabel.innerHTML = "";
                 }else if(clickedBtn.innerHTML == '='){
                    try{
-                     console.log( myCalculator.casting(currentOperation));
-                        
+                     console.log(myCalculator.ToPostFix(currentOperation));
+                    
                     }catch(error){
                      console.error(error);
                      ansLabel.innerHTML =" Syntax Error";
                    }
-                    
                 }  
             });
         });
