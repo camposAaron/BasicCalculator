@@ -22,19 +22,25 @@ function CatchInfoBtn(): void {
                 opLabel.innerHTML = currentOperation + clickedBtn?.innerHTML;
             } else if (clickedBtn.innerHTML == 'DEL') {
                 currentOperation = opLabel.innerHTML;
-                opLabel.innerHTML = currentOperation.slice(0, currentOperation.length - 1);
+               
+                let lastChart = currentOperation[currentOperation.length - 1];
+               
+                    if(lastChart === 's' || lastChart == ' ')
+                       opLabel.innerHTML = currentOperation.slice(0, currentOperation.length - 3);
+                    else
+                       opLabel.innerHTML = currentOperation.slice(0, currentOperation.length - 1);
+  
+           
             } else if (clickedBtn.innerHTML == 'AC') {
                 opLabel.innerHTML = "";
                 ansLabel.innerHTML = "";
+           
             } else if (clickedBtn.innerHTML == '=') {
-                
-                    console.log(myCalculator.ToPostFix(currentOperation));
-                    let ansNumber:number = myCalculator.Evaluating();
-                   
-                    !isNaN(ansNumber)? ansLabel.innerHTML =`${ansNumber}` : ansLabel.innerHTML =`Syntax Error`;
-                    
-               
-                
+        
+                      console.log(myCalculator.ToPostFix(currentOperation));
+                      let ansNumber:number = myCalculator.Evaluating();
+                      !isNaN(ansNumber)? ansLabel.innerHTML =`${ansNumber}` : ansLabel.innerHTML =`Syntax Error`;
+
             }
         });
     });

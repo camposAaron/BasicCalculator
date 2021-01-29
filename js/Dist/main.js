@@ -16,7 +16,11 @@ function CatchInfoBtn() {
             }
             else if (clickedBtn.innerHTML == 'DEL') {
                 currentOperation = opLabel.innerHTML;
-                opLabel.innerHTML = currentOperation.slice(0, currentOperation.length - 1);
+                let lastChart = currentOperation[currentOperation.length - 1];
+                if (lastChart === 's' || lastChart == ' ')
+                    opLabel.innerHTML = currentOperation.slice(0, currentOperation.length - 3);
+                else
+                    opLabel.innerHTML = currentOperation.slice(0, currentOperation.length - 1);
             }
             else if (clickedBtn.innerHTML == 'AC') {
                 opLabel.innerHTML = "";
