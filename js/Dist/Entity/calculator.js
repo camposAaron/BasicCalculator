@@ -82,11 +82,12 @@ export class Calculator {
         }
         return this.postFix;
     }
+    //Evaluating PostFix chain
     Evaluating() {
         this.cleanOperationPile();
         this.postFix.forEach((simbol) => {
             if (this.precedent.get(simbol) == undefined) {
-                this.operatorPile2.push(parseInt(simbol));
+                this.operatorPile2.push(parseFloat(simbol));
             }
             else {
                 let operating2 = this.operatorPile2.pop();

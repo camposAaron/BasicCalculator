@@ -112,12 +112,13 @@ export class Calculator implements ICalculate {
         return this.postFix;
     }
 
+    //Evaluating PostFix chain
     Evaluating(): number {
         this.cleanOperationPile();
         this.postFix.forEach((simbol) => {
 
             if (this.precedent.get(simbol) == undefined) {
-                this.operatorPile2.push(parseInt(simbol));
+                this.operatorPile2.push(parseFloat(simbol));
             } else {
                 let operating2: number = this.operatorPile2.pop()!;
                 let operating1: number = this.operatorPile2.pop()!;

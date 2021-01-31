@@ -36,7 +36,16 @@ function CatchInfoBtn(): void {
                 ansLabel.innerHTML = "";
            
             } else if (clickedBtn.innerHTML == '=') {
-        
+
+                /*This conditiol most be used in the case when the first character
+                 in the operation is a simbol - or +*/
+              
+                 if(currentOperation[1] === '-' || currentOperation[1] === '+'){
+                   //here try to delete the space betwen the fisrt operator and first operading
+                   let firstSimbol = currentOperation.slice(0,2).trim();
+                   let wordScraps = currentOperation.slice(2).trim();
+                   currentOperation = firstSimbol.concat(wordScraps);
+                }
                       console.log(myCalculator.ToPostFix(currentOperation));
                       let ansNumber:number = myCalculator.Evaluating();
                       !isNaN(ansNumber)? ansLabel.innerHTML =`${ansNumber}` : ansLabel.innerHTML =`Syntax Error`;
