@@ -36,8 +36,8 @@ function CatchInfoBtn() {
                     currentOperation = firstSimbol.concat(wordScraps);
                 }
                 console.log(myCalculator.ToPostFix(currentOperation));
-                let ansNumber = myCalculator.Evaluating();
-                !isNaN(ansNumber) ? ansLabel.innerHTML = `${ansNumber}` : ansLabel.innerHTML = `Syntax Error`;
+                let result = myCalculator.Evaluating();
+                result !== -1 ? ansLabel.innerHTML = `${result}` : ansLabel.innerHTML = `Syntax Error`;
             }
         });
     });

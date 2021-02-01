@@ -9,6 +9,8 @@ export class Calculator implements ICalculate {
     private precedent: Map<string, any>;
     //number pile
     private operatorPile2: number[];
+    //previous number result
+    private previous:number;
    
     constructor() {
         //initializing the map
@@ -24,6 +26,8 @@ export class Calculator implements ICalculate {
         this.inputs = [];
 
         this.operatorPile2 = [];
+
+        this.previous = 0;
     }
 
     DoAritmethitc(simbol: string, operatingLeft: number, operatingRight: number): number {
@@ -62,15 +66,19 @@ export class Calculator implements ICalculate {
         this.operatorPile.splice(0, this.inputs.length);
     }
 
-    //transform ÷ => /  and  x => *
+    //transform ÷ => /  ,  x => * and Ans to previous number
     private casting(inputChain: string): string[] {
         //insert the actual input into inputs array
-        this.inputs.push(inputChain);
-
         let arrayCasted: string[];
+       
+        this.inputs.push(inputChain);
+     
         inputChain = inputChain.replace(/÷/g, "/");
         inputChain = inputChain.replace(/x/g, "*");
-       
+        
+        if(inputChain.includes('Ans'))
+          inputChain =   inputChain.replace(/Ans/g,''.concat(this.previous.toString()));
+
         arrayCasted = inputChain.split(' ');
 
         return arrayCasted;
@@ -114,6 +122,7 @@ export class Calculator implements ICalculate {
 
     //Evaluating PostFix chain
     Evaluating(): number {
+        let result:number;
         this.cleanOperationPile();
         this.postFix.forEach((simbol) => {
 
@@ -126,7 +135,14 @@ export class Calculator implements ICalculate {
                 this.operatorPile2.push(result);
             }
         });
+     
+        result = this.operatorPile2.pop()!;
+       
+        if(!isNaN(result)){
+           this.previous = result;
+           return result;
+        }else   
+            return -1;
 
-        return this.operatorPile2.pop()!;
     }
 }

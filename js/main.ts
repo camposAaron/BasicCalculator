@@ -47,8 +47,8 @@ function CatchInfoBtn(): void {
                    currentOperation = firstSimbol.concat(wordScraps);
                 }
                       console.log(myCalculator.ToPostFix(currentOperation));
-                      let ansNumber:number = myCalculator.Evaluating();
-                      !isNaN(ansNumber)? ansLabel.innerHTML =`${ansNumber}` : ansLabel.innerHTML =`Syntax Error`;
+                      let result:number = myCalculator.Evaluating();
+                       result !== -1? ansLabel.innerHTML =`${result}` : ansLabel.innerHTML =`Syntax Error`;
 
             }
         });

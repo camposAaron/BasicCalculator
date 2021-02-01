@@ -11,6 +11,7 @@ export class Calculator {
         this.postFix = [];
         this.inputs = [];
         this.operatorPile2 = [];
+        this.previous = 0;
     }
     DoAritmethitc(simbol, operatingLeft, operatingRight) {
         switch (simbol) {
@@ -40,13 +41,15 @@ export class Calculator {
     cleanOperationPile() {
         this.operatorPile.splice(0, this.inputs.length);
     }
-    //transform ÷ => /  and  x => *
+    //transform ÷ => /  ,  x => * and Ans to previous number
     casting(inputChain) {
         //insert the actual input into inputs array
-        this.inputs.push(inputChain);
         let arrayCasted;
+        this.inputs.push(inputChain);
         inputChain = inputChain.replace(/÷/g, "/");
         inputChain = inputChain.replace(/x/g, "*");
+        if (inputChain.includes('Ans'))
+            inputChain = inputChain.replace(/Ans/g, ''.concat(this.previous.toString()));
         arrayCasted = inputChain.split(' ');
         return arrayCasted;
     }
@@ -84,6 +87,7 @@ export class Calculator {
     }
     //Evaluating PostFix chain
     Evaluating() {
+        let result;
         this.cleanOperationPile();
         this.postFix.forEach((simbol) => {
             if (this.precedent.get(simbol) == undefined) {
@@ -96,7 +100,13 @@ export class Calculator {
                 this.operatorPile2.push(result);
             }
         });
-        return this.operatorPile2.pop();
+        result = this.operatorPile2.pop();
+        if (!isNaN(result)) {
+            this.previous = result;
+            return result;
+        }
+        else
+            return -1;
     }
 }
 //# sourceMappingURL=calculator.js.map
