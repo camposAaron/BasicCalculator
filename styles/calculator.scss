@@ -22,7 +22,7 @@ $buttonColor: #736D99;
 }
 
 body{
-    background: url(imga/radialimage.png);
+    background: url(../imga/radialimage.png);
     background-color: #201c35;
 
     h2{
@@ -152,6 +152,6 @@ body{
     background: #f2f2f2 !important;
 }
 
-
-
+/*importing the responsive file*/
+@import "responsive";
 
