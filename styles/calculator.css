@@ -2,7 +2,7 @@
 /*Font styles*/
 /*unselectable mode*/
 body {
-  background: url(imga/radialimage.png);
+  background: url(../imga/radialimage.png);
   background-color: #201c35;
 }
 
@@ -201,5 +201,43 @@ body #layout #buttons .btn:active {
 
 #equal {
   background: #f2f2f2 !important;
+}
+
+/*importing the responsive file*/
+@media (max-width: 1200px) {
+  body #layout {
+    width: 45%;
+  }
+}
+
+@media (max-width: 992px) {
+  body #layout {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  body #layout {
+    width: 60%;
+  }
+}
+
+@media (max-width: 576px) {
+  body #layout {
+    width: 70%;
+  }
+}
+
+@media (max-width: 492px) {
+  body #layout {
+    width: 90%;
+    margin: 0px auto;
+  }
+}
+
+@media (max-width: 492px) {
+  body #layout {
+    width: 98%;
+  }
 }
 /*# sourceMappingURL=calculator.css.map */
